@@ -14,6 +14,9 @@ create trigger dbo.TR_Basket_insert_update
         
         update dbo.Basket
           set DiscountValue = Value * 0.05
-            from @countIdSku as c
-            where c.ID_SKU = dbo.Basket.ID_SKU
+            where dbo.Basket.ID_SKU in (select ID_SKU from @countIdSku)
+            
+        update dbo.Basket
+          set DiscountValue = 0
+            where dbo.Basket.ID_SKU not in (select ID_SKU from @countIdSku)
     end;
