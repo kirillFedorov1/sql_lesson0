@@ -16,7 +16,7 @@ create table dbo.Basket (
   Quantity int check(Quantity >= 0),
   Value dec(18, 2) check(Value >= 0),
   PurchaseDate date default getdate(),
-  DiscountValue dec(18, 2) default 0.00
+  DiscountValue dec(18, 2)
 );
 
 if object_id('dbo.Family', 'U') is not null
