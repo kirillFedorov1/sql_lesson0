@@ -8,7 +8,7 @@ create table dbo.SKU (
 );
 
 if object_id('dbo.Basket', 'U') is not null
-  drop table dbo.SKU;
+  drop table dbo.Basket;
 
 create table dbo.Basket (
   ID int primary key identity,
@@ -20,7 +20,7 @@ create table dbo.Basket (
 );
 
 if object_id('dbo.Family', 'U') is not null
-  drop table dbo.SKU;
+  drop table dbo.Family;
 
 create table dbo.Family (
   ID int primary key identity,
