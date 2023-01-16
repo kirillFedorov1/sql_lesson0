@@ -4,13 +4,9 @@ if object_id('dbo.udf_GetSKUPrice', 'U') is not null
 create function dbo.udf_GetSKUPrice (@ID_SKU int)
   returns dec(18, 2)
   begin
-    declare @price dec(18, 2), @value dec(18, 2), @quantity int
+    declare @price dec(18, 2)
     
-    select @value = sum (Value) from dbo.Basket where ID_SKU = @ID_SKU
-    
-    select @quantity = sum (Quantity) from dbo.Basket where ID_SKU = @ID_SKU
-    
-    set @price = @value / @quantity
+    select @price = sum(Value) / sum(Quantity) from dbo.Basket where ID_SKU = @ID_SKU
     
     return @price
   end;
